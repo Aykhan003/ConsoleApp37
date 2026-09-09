@@ -4,7 +4,7 @@
     {
         public static int EmployeeID = 1000;
 
-        public Employee(string fullName, string position, int salary, string departmentName)
+        public Employee(string fullName, string position, double salary, string departmentName)
         {
             var departmentCode = DepartmentName.Substring(0, 2);
             Id = (departmentCode + EmployeeID.ToString());
@@ -32,7 +32,7 @@
                 }
             }
         }
-        public int Salary
+        public double Salary
         {
             get
             {
