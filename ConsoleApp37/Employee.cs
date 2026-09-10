@@ -6,7 +6,7 @@
 
         public Employee(string fullName, string position, double salary, string departmentName)
         {
-            var departmentCode = DepartmentName.Substring(0, 2);
+            var departmentCode = departmentName.Substring(0, 2);
             Id = (departmentCode + EmployeeID.ToString());
             EmployeeID++;
             FullName = fullName;
@@ -17,14 +17,15 @@
 
         public string Id { get; set; }
         public string FullName { get; set; }
+        private string _position;
         public string Position
         {
-            get { return Position; }
+            get { return _position; }
             set
             {
                 if (value.Length > 2)
                     {
-                    Position = value;
+                    _position = value;
                 }
                 else
                 {
@@ -32,17 +33,18 @@
                 }
             }
         }
+        private double _salary;
         public double Salary
         {
             get
             {
-                return Salary;
+                return _salary;
             }
             set
             {
                 if (value > 250)
                 {
-                    Salary = value;
+                    _salary = value;
                 }
                 else
                 {
