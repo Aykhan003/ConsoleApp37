@@ -6,40 +6,57 @@
         {
             HumanResourceManager hrm = new HumanResourceManager();
 
-            try
-            {
-                //Departament Yaratmaq və Əlavə Etmək
-                Employee[] initialEmployees = new Employee[0];
-                Department dept = new Department("IT_Dept", 5, 20000, initialEmployees);
+            Employee[] initialEmployees = new Employee[0];
 
-                hrm.AddDepartment(dept);
-                Console.WriteLine("--- Departamentlər ---");
-                hrm.GetDepartments();
+            Department dept = new Department(
+                "IT_Dept",
+                5,
+                20000,
+                initialEmployees
+            );
 
-                //İşçi Yaratmaq və Departamentə Əlavə Etmək
-                Employee emp1 = new Employee("Ali Aliyev", "Developer", 1500, "IT_Dept");
-                Employee emp2 = new Employee("Vali Valiyev", "Designer", 1200, "IT_Dept");
+            hrm.AddDepartment(dept);
 
-                hrm.AddEmployee("IT_Dept", emp1);
-                hrm.AddEmployee("IT_Dept", emp2);
+            Console.WriteLine("--- Departamentlər ---");
+            hrm.GetDepartments();
 
-                hrm.Search("Developer");
+            Employee emp1 = new Employee(
+                "Ali Aliyev",
+                "Developer",
+                1500,
+                "IT_Dept"
+            );
 
-                //İşçini Redaktə Etmək
-                hrm.EditEmployee(emp1.Id, 2500, "Senior Developer");
-                hrm.Search("Ali"); 
+            Employee emp2 = new Employee(
+                "Vali Valiyev",
+                "Designer",
+                1200,
+                "IT_Dept"
+            );
 
-                //İşçini Silmək
-                Console.WriteLine("\n--- İşçi Silinir (Vali Valiyev) ---");
-                hrm.RemoveEmployee("IT_Dept", "Vali Valiyev");
+            hrm.AddEmployee("IT_Dept", emp1);
+            hrm.AddEmployee("IT_Dept", emp2);
 
-                Console.WriteLine("\n--- Silindikden Sonra Axtarış (Vali) ---");
-                hrm.Search("Vali"); 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"{ex.Message}");
-            }
+            hrm.Search("Developer");
+
+            hrm.EditEmployee(
+                emp1.Id,
+                2500,
+                "Senior Developer"
+            );
+
+            hrm.Search("Ali");
+
+            Console.WriteLine("\n--- isci silinir (Vali Valiyev) ---");
+
+            hrm.RemoveEmployee(
+                "IT_Dept",
+                "Vali Valiyev"
+            );
+
+            Console.WriteLine("\n--- Silindikden Sonra Axtarıs (Vali) ---");
+
+            hrm.Search("Vali");
 
             Console.ReadLine();
         }
